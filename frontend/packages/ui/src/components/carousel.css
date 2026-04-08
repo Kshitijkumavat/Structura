@@ -1,0 +1,311 @@
+/* ── Tanishka Constructions — Services Carousel ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
+.tc-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #131010;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Section label top-left */
+.tc-section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 2.5rem;
+  left: 4rem;
+}
+
+.tc-label-line {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: #F0BB78;
+  opacity: 0.6;
+}
+
+.tc-label-text {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #F0BB78;
+  opacity: 0.7;
+}
+
+/* Inner layout */
+.tc-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* ── Left: Text ── */
+.tc-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.tc-content-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Slide number */
+.tc-num {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.tc-num-line {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: rgba(240, 187, 120, 0.4);
+}
+
+.tc-num-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 240, 220, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Title */
+.tc-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  color: #FFF0DC;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Subtitle */
+.tc-subtitle {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #F0BB78;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+/* Description */
+.tc-description {
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.8;
+  color: rgba(255, 240, 220, 0.55);
+  max-width: 38ch;
+  margin: 0 0 2.5rem 0;
+}
+
+/* Arrow buttons */
+.tc-arrows {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.tc-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 187, 120, 0.25);
+  background: transparent;
+  color: #FFF0DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.tc-arrow:hover {
+  background: #F0BB78;
+  border-color: #F0BB78;
+  color: #131010;
+}
+
+/* ── Right: Image ── */
+.tc-image-container {
+  position: relative;
+  height: 72vh;
+  max-height: 600px;
+}
+
+.tc-image-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.tc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.tc-image-frame:hover .tc-image {
+  transform: scale(1.03);
+}
+
+.tc-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(84, 58, 20, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Decorative corner accents */
+.tc-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: #F0BB78;
+  border-style: solid;
+  opacity: 0.5;
+}
+
+.tc-corner--tl {
+  top: -8px;
+  left: -8px;
+  border-width: 1px 0 0 1px;
+}
+
+.tc-corner--br {
+  bottom: -8px;
+  right: -8px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ── Progress bar ── */
+.tc-progress-bar {
+  display: flex;
+  gap: 1.5rem;
+  position: absolute;
+  bottom: 2.5rem;
+  left: 4rem;
+  right: 4rem;
+  max-width: 1200px;
+  width: calc(100% - 8rem);
+}
+
+.tc-progress-item {
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.tc-progress-track {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 240, 220, 0.1);
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tc-progress-fill {
+  height: 100%;
+  background: #F0BB78;
+  transition: width 0.05s linear;
+}
+
+.tc-progress-item:not(.active) .tc-progress-fill {
+  background: rgba(240, 187, 120, 0.35);
+}
+
+.tc-progress-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 240, 220, 0.25);
+  transition: color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.tc-progress-item.active .tc-progress-label,
+.tc-progress-item:hover .tc-progress-label {
+  color: rgba(255, 240, 220, 0.65);
+}
+
+/* ── Transitions ── */
+.tc-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tc-out {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tc-num.tc-in  { transition-delay: 0s; }
+.tc-title.tc-in { transition-delay: 0.05s; }
+.tc-subtitle.tc-in { transition-delay: 0.1s; }
+.tc-description.tc-in { transition-delay: 0.15s; }
+.tc-arrows.tc-in { transition-delay: 0.2s; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .tc-carousel-wrapper {
+    padding: 5rem 1.5rem 5rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .tc-section-label {
+    left: 1.5rem;
+  }
+
+  .tc-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .tc-image-container {
+    height: 45vw;
+    max-height: 300px;
+    order: -1;
+  }
+
+  .tc-progress-bar {
+    left: 1.5rem;
+    right: 1.5rem;
+    width: calc(100% - 3rem);
+    gap: 0.75rem;
+    bottom: 1.5rem;
+  }
+
+  .tc-progress-label {
+    display: none;
+  }
+}
