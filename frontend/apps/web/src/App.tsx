@@ -152,8 +152,10 @@ const App = () => {
         initialClipPercentage={25}
         finalClipPercentage={75}
       />
-      <ServicesCarousel />
       <ProjectsSection />
+      <ServicesCarousel />
+
+      
       {/* ── About section sits in normal document flow below hero ── */}
       <AboutUsSection aboutImage={aboutImg}/>
       <Testimonials />

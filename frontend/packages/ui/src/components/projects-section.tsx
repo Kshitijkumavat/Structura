@@ -79,6 +79,8 @@ const defaultProjects: Project[] = [
   },
 ]
 
+const poppins = "'Poppins', sans-serif"
+
 export default function ProjectsSection({ projects = defaultProjects }: ProjectsSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 })
@@ -100,24 +102,23 @@ export default function ProjectsSection({ projects = defaultProjects }: Projects
       style={{
         width: "100%",
         padding: "7rem 1.5rem",
-        background: "#0e0c0c",
+        background: "#FFF0DC",
         position: "relative",
         overflow: "hidden",
+        fontFamily: poppins,
       }}
     >
-      {/* Subtle background glow */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20%",
-          right: "-10%",
-          width: "500px",
-          height: "500px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(84,58,20,0.1) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Subtle warm texture overlay */}
+      <div style={{
+        position: "absolute",
+        top: "10%",
+        left: "-5%",
+        width: "400px",
+        height: "400px",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(240,187,120,0.12) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
 
       <motion.div
         style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", zIndex: 10 }}
@@ -127,41 +128,33 @@ export default function ProjectsSection({ projects = defaultProjects }: Projects
       >
         {/* ── Header ── */}
         <motion.div variants={itemVariants} style={{ marginBottom: "3.5rem" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1rem",
-            }}
-          >
-            <span style={{ width: "24px", height: "1px", background: "#F0BB78", opacity: 0.5 }} />
-            <span
-              style={{
-                color: "#F0BB78",
-                fontSize: "0.6rem",
-                letterSpacing: "0.4em",
-                textTransform: "uppercase",
-              }}
-            >
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+            <span style={{ width: "24px", height: "1px", background: "#543A14", opacity: 0.4 }} />
+            <span style={{
+              color: "#543A14",
+              fontSize: "0.6rem",
+              letterSpacing: "0.4em",
+              textTransform: "uppercase",
+              fontFamily: poppins,
+              fontWeight: 500,
+            }}>
               Our Portfolio
             </span>
           </div>
 
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
-              fontWeight: 300,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#FFF0DC",
-              margin: "0 0 1.25rem",
-            }}
-          >
+          <h2 style={{
+            fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
+            fontWeight: 600,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: "#131010",
+            margin: "0 0 1.25rem",
+            fontFamily: poppins,
+          }}>
             Featured Projects
           </h2>
 
-          <div style={{ width: "48px", height: "1px", background: "rgba(240,187,120,0.4)" }} />
+          <div style={{ width: "48px", height: "1px", background: "#543A14", opacity: 0.4 }} />
         </motion.div>
 
         {/* ── Grid ── */}
@@ -179,60 +172,68 @@ export default function ProjectsSection({ projects = defaultProjects }: Projects
                 title={project.title}
                 src={project.image}
                 description={project.category}
+                // Light theme overrides passed as props for the card footer
+                style={{
+                  background: "#fff8f0",
+                  border: "1px solid rgba(84,58,20,0.15)",
+                }}
+                styleExpanded={{
+                  background: "#fff8f0",
+                  border: "1px solid rgba(84,58,20,0.2)",
+                }}
               >
-                {/* Expanded content */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr",
-                    gap: "1px",
-                    background: "rgba(240,187,120,0.1)",
-                    border: "1px solid rgba(240,187,120,0.1)",
-                    marginBottom: "1.25rem",
-                  }}
-                >
+                {/* Expanded content — meta grid */}
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr",
+                  gap: "1px",
+                  background: "rgba(84,58,20,0.1)",
+                  border: "1px solid rgba(84,58,20,0.1)",
+                  marginBottom: "1.25rem",
+                }}>
                   {[
                     { label: "Year", value: project.year },
                     { label: "Location", value: project.location },
                     { label: "Area", value: project.area },
                   ].map((item) => (
-                    <div
-                      key={item.label}
-                      style={{
-                        background: "#1a1717",
-                        padding: "0.875rem 1rem",
-                      }}
-                    >
-                      <p
-                        style={{
-                          fontSize: "0.55rem",
-                          letterSpacing: "0.25em",
-                          textTransform: "uppercase",
-                          color: "#F0BB78",
-                          marginBottom: "0.3rem",
-                          opacity: 0.8,
-                        }}
-                      >
+                    <div key={item.label} style={{ background: "#fff8f0", padding: "0.875rem 1rem" }}>
+                      <p style={{
+                        fontSize: "0.55rem",
+                        letterSpacing: "0.25em",
+                        textTransform: "uppercase",
+                        color: "#543A14",
+                        marginBottom: "0.3rem",
+                        opacity: 0.8,
+                        fontFamily: poppins,
+                        fontWeight: 500,
+                      }}>
                         {item.label}
                       </p>
-                      <p
-                        style={{
-                          fontSize: "0.78rem",
-                          color: "#DFD0B8",
-                          margin: 0,
-                          lineHeight: 1.4,
-                        }}
-                      >
+                      <p style={{
+                        fontSize: "0.78rem",
+                        color: "#131010",
+                        margin: 0,
+                        lineHeight: 1.4,
+                        fontFamily: poppins,
+                        fontWeight: 400,
+                      }}>
                         {item.value}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <p style={{ color: "#948979", fontSize: "0.875rem", lineHeight: 1.85, margin: 0 }}>
+                <p style={{
+                  color: "#543A14",
+                  fontSize: "0.875rem",
+                  lineHeight: 1.85,
+                  margin: 0,
+                  fontFamily: poppins,
+                  fontWeight: 400,
+                  opacity: 0.8,
+                }}>
                   {project.description}
                 </p>
-
               </ExpandableCard>
             </motion.div>
           ))}
