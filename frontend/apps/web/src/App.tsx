@@ -6,6 +6,7 @@ import AboutUsSection from "@workspace/ui/components/about-us-section";
 import ProjectsSection from "@workspace/ui/components/projects-section"
 import { Testimonials } from "@workspace/ui/components/testimonials-section";
 import ServicesCarousel from "@workspace/ui/components/elegant-carousel";
+import Footer from '@workspace/ui/components/footer';
 import cityImg from "./assets/city.jpg";
 import aboutImg from "./assets/about.jpg";
 
@@ -152,13 +153,11 @@ const App = () => {
         initialClipPercentage={25}
         finalClipPercentage={75}
       />
-      <ProjectsSection />
-      <ServicesCarousel />
-
-      
-      {/* ── About section sits in normal document flow below hero ── */}
-      <AboutUsSection aboutImage={aboutImg}/>
+      <div id="about"><AboutUsSection aboutImage={aboutImg}/></div>
+      <div id="services"><ServicesCarousel /></div>
+      <div id="projects"><ProjectsSection /></div>
       <Testimonials />
+      <div id="contact"><Footer /></div>
     </div>
   );
 };

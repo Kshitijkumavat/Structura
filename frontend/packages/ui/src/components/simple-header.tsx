@@ -8,10 +8,10 @@ export function SimpleHeader() {
 	const [open, setOpen] = React.useState(false);
 
 	const links = [
-		{ label: 'Projects', href: '#' },
-		{ label: 'Services', href: '#' },
-		{ label: 'About', href: '#' },
-		{ label: 'Contact', href: '#' },
+		{ label: 'About', href: '#about' },
+		{ label: 'Services', href: '#services' },
+		{ label: 'Projects', href: '#projects' },
+		{ label: 'Contact', href: '#contact' },
 	];
 
 	return (
